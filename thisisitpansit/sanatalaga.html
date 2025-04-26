@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>National Museum of the Philippines Feedback System</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 15px;
+      background-color: #f5f5f5;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      transition: background-image 1s ease-in-out;
+    }
+
+    header, form, footer , #feedbackResult{
+      background-color: white;
+      padding: 15px;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+
+    h1, h2 {
+      text-align: center;
+      font-size: 24px;
+      margin-bottom: 10px;
+    }
+
+    p {
+      margin: 8px 0;
+    }
+
+    fieldset {
+      margin-bottom: 15px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      padding: 10px;
+    }
+
+    label {
+      display: inline-block;
+      margin-bottom: 4px;
+      font-weight: bold;
+      font-size: 14px;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="date"],
+    select,
+    textarea {
+      width: 98%;
+      padding: 6px;
+      margin-top: 3px;
+      margin-bottom: 8px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 14px;
+    }
+
+    button {
+      background-color: #4CAF50;
+      color: white;
+      padding: 10px 18px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 15px;
+    }
+
+    button:hover {
+      background-color: #45a049;
+    }
+
+    /* Star Rating */
+    .star-rating {
+      display: flex;
+      flex-direction: row-reverse;
+      justify-content: center;
+      margin-top: 5px;
+      margin-bottom: 5px;
+    }
+
+    .star-rating input {
+      display: none;
+    }
+
+    .star-rating label {
+      font-size: 30px;
+      color: gray;
+      cursor: pointer;
+      transition: color 0.2s;
+    }
+
+    .star-rating input:checked ~ label,
+    .star-rating label:hover,
+    .star-rating label:hover ~ label {
+      color: gold;
+    }
+
+    /* Facilities */
+    .facilities-group {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+      gap: 8px;
+    }
+
+    .facilities-group label {
+      font-weight: normal;
+      font-size: 14px;
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <h1>National Museum of the Philippines Feedback System</h1>
+  <h5>Help us improve your museum experience by sharing your feedback</h5>
+</header>
+
+<form id="surveyForm">
+  <fieldset>
+    <legend>Museum Selection</legend>
+    <p>
+      <label for="museumLocation">National Museum Location:</label>
+      <select id="museumLocation" name="museumLocation" required>
+        <option value="">Select museum location</option>
+        <option value="nm-finearts">National Museum of Fine Arts (Manila)</option>
+        <option value="nm-anthropology">National Museum of Anthropology (Manila)</option>
+        <option value="nm-natural-history">National Museum of Natural History (Manila)</option>
+        <option value="nm-cebu">National Museum Cebu</option>
+        <option value="nm-bohol">National Museum Bohol</option>
+        <option value="nm-ilocos">National Museum Ilocos</option>
+        <option value="nm-davao">National Museum Davao</option>
+      </select>
+    </p>
+  </fieldset>
+
+  <fieldset>
+    <legend>Visitor Information</legend>
+    <p>
+      <label for="name">Full Name:</label>
+      <input type="text" id="name" name="name" required>
+    </p>
+
+    <p>
+      <label for="email">Email Address:</label>
+      <input type="email" id="email" name="email" required>
+    </p>
+
+    <p>
+      <label for="nationality">Nationality:</label>
+      <select id="nationality" name="nationality" required>
+        <option value="">Select your nationality</option>
+        <option value="local">Filipino</option>
+        <option value="foreign">Foreign</option>
+      </select>
+    </p>
+
+    <p>
+      <label for="visitDate">Visit Date:</label>
+      <input type="date" id="visitDate" name="visitDate" required>
+    </p>
+  </fieldset>
+  
+    <fieldset>
+        
+        <legend>Rating</legend>
+      
+        <div style="margin-bottom: 15px; margin-left: 10px; margin-top: 10px;">
+          <label for="experienceRating">Experience Rating:</label>
+          <div class="star-rating">
+            <input type="radio" id="exp-5-stars" name="experienceRating" value="5" required><label for="exp-5-stars">★</label>
+            <input type="radio" id="exp-4-stars" name="experienceRating" value="4"><label for="exp-4-stars">★</label>
+            <input type="radio" id="exp-3-stars" name="experienceRating" value="3"><label for="exp-3-stars">★</label>
+            <input type="radio" id="exp-2-stars" name="experienceRating" value="2"><label for="exp-2-stars">★</label>
+            <input type="radio" id="exp-1-star" name="experienceRating" value="1"><label for="exp-1-star">★</label>
+          </div>
+        </div>
+        
+        <div style="margin-bottom: 10px; margin-left: 10px;">
+          <label for="cleanlinessRating">Cleanliness:</label>
+          <div class="star-rating">
+            <input type="radio" id="clean-5-stars" name="cleanlinessRating" value="5" required><label for="clean-5-stars">★</label>
+            <input type="radio" id="clean-4-stars" name="cleanlinessRating" value="4"><label for="clean-4-stars">★</label>
+            <input type="radio" id="clean-3-stars" name="cleanlinessRating" value="3"><label for="clean-3-stars">★</label>
+            <input type="radio" id="clean-2-stars" name="cleanlinessRating" value="2"><label for="clean-2-stars">★</label>
+            <input type="radio" id="clean-1-star" name="cleanlinessRating" value="1"><label for="clean-1-star">★</label>
+          </div>
+        </div>
+      
+      </fieldset>
+
+  <fieldset>
+    <legend>Facilities Available</legend>
+    <div class="facilities-group">
+      <p><input type="checkbox" id="restrooms" name="facilities" value="Restrooms"> <label for="restrooms">Restrooms</label></p>
+      <p><input type="checkbox" id="parking" name="facilities" value="Parking"> <label for="parking">Parking</label></p>
+      <p><input type="checkbox" id="guides" name="facilities" value="Guides"> <label for="guides">Museum Guides</label></p>
+      <p><input type="checkbox" id="giftshop" name="facilities" value="Souvenir Shop"> <label for="giftshop">Souvenir Shop</label></p>
+      <p><input type="checkbox" id="wheelchair" name="facilities" value="Wheelchair Access"> <label for="wheelchair">Wheelchair Access</label></p>
+    </div>
+  </fieldset>
+
+  <fieldset>
+    <legend>Exhibit Feedback</legend>
+    <p>
+      <label for="exhibits">Favorite Exhibit/Collection:</label>
+      <input type="text" id="exhibits" name="exhibits" placeholder="Which exhibit did you enjoy the most?">
+    </p>
+
+    <p>
+      <label for="comments">Additional Comments/Suggestions:</label>
+      <textarea id="comments" name="comments" rows="4" placeholder="Share your museum experience and suggestions for improvement..."></textarea>
+    </p>
+  </fieldset>
+
+  <p style="text-align: center;">
+    <button type="submit">Submit Feedback & Download</button>
+  </p>
+
+</form>
+
+<footer>
+  <h2>Thank You!</h2>
+  <h5>We appreciate your feedback. Your input helps us improve the National Museum experience for all visitors. Mabuhay!</h5>
+</footer>
+
+<div id="feedbackResult">
+    <h2>Feedback Received</h2>
+  </div>
+
+<script>
+    const museumSelect = document.getElementById('museumLocation');
+    museumSelect.addEventListener('change', function () {
+      let bgImage = '';
+  
+      if (this.value === 'nm-finearts') {
+        bgImage = 'finearts.jpg';
+      } else if (this.value === 'nm-anthropology') {
+        bgImage = 'Anthro.jpg';
+      } else if (this.value === 'nm-natural-history') {
+        bgImage = 'naturalhistory.jpg';
+      } else {
+        bgImage = '';
+      }
+  
+      if (bgImage) {
+        document.body.style.backgroundImage = `url('${bgImage}')`;
+      } else {
+        document.body.style.backgroundImage = '';
+      }
+    });
+  
+    // Handle form submission to display results at the end of the page.
+    document.getElementById('surveyForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      const form = e.target;
+      const feedbackResult = document.getElementById('feedbackResult');
+      
+      // Create a new div for this feedback entry.
+      const feedbackEntry = document.createElement('div');
+      feedbackEntry.style.borderTop = "1px solid #ccc";
+      feedbackEntry.style.paddingTop = "10px";
+      feedbackEntry.style.marginTop = "10px";
+      
+      // Build the feedback content.
+      feedbackEntry.innerHTML = `
+        <p><strong>Museum Location:</strong> ${form.museumLocation.options[form.museumLocation.selectedIndex].text}</p>
+        <p><strong>Name:</strong> ${form.name.value}</p>
+        <p><strong>Email:</strong> ${form.email.value}</p>
+        <p><strong>Nationality:</strong> ${form.nationality.options[form.nationality.selectedIndex].text}</p>
+        <p><strong>Visit Date:</strong> ${form.visitDate.value}</p>
+        <p><strong>Experience Rating:</strong> ${form.experienceRating.value} star(s)</p>
+        <p><strong>Cleanliness Rating:</strong> ${form.cleanlinessRating.value} star(s)</p>
+        <p><strong>Facilities:</strong> ${Array.from(form.querySelectorAll('input[name="facilities"]:checked')).map(f => f.value).join(', ')}</p>
+        <p><strong>Favorite Exhibit/Collection:</strong> ${form.exhibits.value}</p>
+        <p><strong>Additional Comments:</strong> ${form.comments.value}</p>
+      `;
+      
+      // Append the feedback entry to the results container.
+      feedbackResult.appendChild(feedbackEntry);
+      
+      // Reset the form and background image for the next entry.
+      form.reset();
+      document.body.style.backgroundImage = ''; 
+    });
+  </script>
+
+
+
+</body>
+</html>
